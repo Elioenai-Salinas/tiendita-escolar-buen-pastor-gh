@@ -89,134 +89,6 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
-       /* ===================================== */
-/* ===================================== */
-/* IMÁGENES INFERIORES: TABLERO Y CHEF   */
-/* ===================================== */
-
-:root {
-    --tablero-ancho: 20px;
-    --chef-ancho: 20px;
-
-    --tablero-left: 16px;
-    --tablero-bottom: 10px;
-
-    --chef-right: -20px;
-    --chef-bottom: 10px;
-
-    /* ÁREA ÚTIL DEL TEXTO DENTRO DEL TABLERO */
-    --texto-top: 180px;
-    --texto-left: 87px;
-    --texto-ancho: 130px;
-    --texto-alto: 190px;
-
-    /* AJUSTE VISUAL */
-    --texto-line-height: 1.05;
-    --texto-rotacion: -6deg;
-    --texto-inclinacion: -3deg;
-}
-
-/* NO SUBE NI BAJA CON EL SCROLL */
-.decoracion-fija {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 0;
-    z-index: 30;
-    pointer-events: none;
-}
-
-.tablero-menu-wrap {
-    position: fixed;
-    left: var(--tablero-left);
-    bottom: var(--tablero-bottom);
-    width: var(--tablero-ancho);
-    z-index: 31;
-    pointer-events: none;
-}
-
-.tablero-menu-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.tablero-menu-texto {
-    position: absolute;
-    top: var(--texto-top);
-    left: var(--texto-left);
-    width: var(--texto-ancho);
-    height: var(--texto-alto);
-    overflow: hidden;
-    text-align: center;
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    line-height: var(--texto-line-height);
-    white-space: pre-line;
-    word-break: break-word;
-    transform: rotate(var(--texto-rotacion)) skewX(var(--texto-inclinacion));
-    transform-origin: top center;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
-
-.chef-wrap {
-    position: fixed;
-    right: var(--chef-right);
-    bottom: var(--chef-bottom);
-    width: var(--chef-ancho);
-    z-index: 31;
-    pointer-events: none;
-}
-
-.chef-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.tablero-menu-texto {
-    position: absolute;
-    top: var(--texto-top);
-    left: var(--texto-left);
-    width: var(--texto-ancho);
-    height: var(--texto-alto);
-    overflow: hidden;
-    text-align: center;
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-size: var(--contenido-menu-size);
-    line-height: var(--contenido-line-height);
-    font-weight: 700;
-    word-break: break-word;
-    white-space: pre-line;
-}
-
-.tablero-menu-texto .titulo-opcional {
-    display: block;
-    font-size: var(--titulo-menu-size);
-    line-height: 1;
-    margin-bottom: 4px;
-}
-
-.chef-wrap {
-    position: absolute;
-    right: var(--chef-right);
-    bottom: var(--chef-bottom);
-    width: var(--chef-ancho);
-}
-
-.chef-img {
-    width: 100%;
-    height: auto;
-    display: block;
-} 
-
     </style>
 </head>
 <body class="pb-10">
@@ -459,78 +331,78 @@
             dibujarProductos();
         }
 
-     function dibujarProductos() {
-    const box = document.getElementById("contenedor-productos");
+        function dibujarProductos() {
+            const box = document.getElementById("contenedor-productos");
 
-    let htmlFinal = "";
+            let htmlFinal = "";
 
-    CATEGORIAS_MENU.forEach((cat) => {
-        const productosDeCategoria = LISTA_PRODUCTOS.filter(p => p.categoria === cat.id);
+            CATEGORIAS_MENU.forEach((cat) => {
+                const productosDeCategoria = LISTA_PRODUCTOS.filter(p => p.categoria === cat.id);
 
-        htmlFinal += `
-            <div class="col-span-2 mt-4">
-                <h4 class="text-2xl font-food text-blue-900 text-center mb-4">${cat.titulo}</h4>
-            </div>
-        `;
+                htmlFinal += `
+                    <div class="col-span-2 mt-4">
+                        <h4 class="text-2xl font-food text-blue-900 text-center mb-4">${cat.titulo}</h4>
+                    </div>
+                `;
 
-        if (productosDeCategoria.length === 0) {
-            htmlFinal += `
-                <div class="col-span-2 text-center text-blue-500 italic mb-4">
-                    No hay productos en esta categoría.
-                </div>
-            `;
-            return;
-        }
+                if (productosDeCategoria.length === 0) {
+                    htmlFinal += `
+                        <div class="col-span-2 text-center text-blue-500 italic mb-4">
+                            No hay productos en esta categoría.
+                        </div>
+                    `;
+                    return;
+                }
 
-        htmlFinal += productosDeCategoria.map((p) => {
-            const enCarro = carrito[diaActual]?.[recreoActual]?.find((x) => x.id === p.id);
-            const cant = enCarro ? enCarro.cantidad : 0;
-            const agotado = p.agotado === true;
+                htmlFinal += productosDeCategoria.map((p) => {
+                    const enCarro = carrito[diaActual]?.[recreoActual]?.find((x) => x.id === p.id);
+                    const cant = enCarro ? enCarro.cantidad : 0;
+                    const agotado = p.agotado === true;
 
-            return `
-                <div class="rounded-3xl p-3 shadow-sm flex flex-col items-center ${agotado ? "bg-gray-200 opacity-70" : "bg-white"}">
-                    <div class="relative w-full">
-                        <img
-                            src="${p.img}"
-                            alt="${p.name}"
-                            loading="lazy"
-                            class="w-full h-24 object-cover rounded-2xl mb-2 ${agotado ? "grayscale" : ""}"
-                            onerror="this.onerror=null; this.src='${IMG_FALLBACK}'"
-                        >
-                        ${agotado ? `
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                                    AGOTADO
-                                </span>
+                    return `
+                        <div class="rounded-3xl p-3 shadow-sm flex flex-col items-center ${agotado ? "bg-gray-200 opacity-70" : "bg-white"}">
+                            <div class="relative w-full">
+                                <img
+                                    src="${p.img}"
+                                    alt="${p.name}"
+                                    loading="lazy"
+                                    class="w-full h-24 object-cover rounded-2xl mb-2 ${agotado ? "grayscale" : ""}"
+                                    onerror="this.onerror=null; this.src='${IMG_FALLBACK}'"
+                                >
+                                ${agotado ? `
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                                            AGOTADO
+                                        </span>
+                                    </div>
+                                ` : ""}
                             </div>
-                        ` : ""}
-                    </div>
 
-                    <h4 class="font-bold text-blue-900 text-xs text-center">${p.name}</h4>
-                    <p class="text-blue-500 font-black">$${p.price.toFixed(2)}</p>
+                            <h4 class="font-bold text-blue-900 text-xs text-center">${p.name}</h4>
+                            <p class="text-blue-500 font-black">$${p.price.toFixed(2)}</p>
 
-                    <div class="flex items-center gap-3 mt-2">
-                        <button
-                            onclick="sumar('${p.id}', -1)"
-                            class="w-8 h-8 bg-gray-100 rounded-lg ${agotado ? "cursor-not-allowed opacity-60" : ""}"
-                            ${agotado ? "disabled" : ""}
-                        >-</button>
+                            <div class="flex items-center gap-3 mt-2">
+                                <button
+                                    onclick="sumar('${p.id}', -1)"
+                                    class="w-8 h-8 bg-gray-100 rounded-lg ${agotado ? "cursor-not-allowed opacity-60" : ""}"
+                                    ${agotado ? "disabled" : ""}
+                                >-</button>
 
-                        <span class="font-bold">${cant}</span>
+                                <span class="font-bold">${cant}</span>
 
-                        <button
-                            onclick="sumar('${p.id}', 1)"
-                            class="w-8 h-8 ${agotado ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 text-white"} rounded-lg"
-                            ${agotado ? "disabled" : ""}
-                        >+</button>
-                    </div>
-                </div>
-            `;
-        }).join("");
-    });
+                                <button
+                                    onclick="sumar('${p.id}', 1)"
+                                    class="w-8 h-8 ${agotado ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 text-white"} rounded-lg"
+                                    ${agotado ? "disabled" : ""}
+                                >+</button>
+                            </div>
+                        </div>
+                    `;
+                }).join("");
+            });
 
-    box.innerHTML = htmlFinal;
-}
+            box.innerHTML = htmlFinal;
+        }
 
         function sumar(id, cant) {
             const prod = LISTA_PRODUCTOS.find((p) => p.id === id);
@@ -627,58 +499,10 @@
                 "_blank"
             );
         }
-        
-  const TEXTO_TABLERO = `Que tengas feliz día  bendiciones`;
 
-function autoAjustarTextoTablero() {
-    const el = document.getElementById("tablero-texto");
-    if (!el) return;
-
-    el.innerText = TEXTO_TABLERO;
-
-    let size = 22;
-    const minSize = 9;
-    el.style.fontSize = size + "px";
-
-    while ((el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) && size > minSize) {
-        size -= 0.5;
-        el.style.fontSize = size + "px";
-    }
-}
-
-window.onload = function () {
-    inicializarApp();
-    autoAjustarTextoTablero();
-};
-
-window.addEventListener("resize", autoAjustarTextoTablero);
+        window.onload = function () {
+            inicializarApp();
+        };
     </script>
-    <!-- ===================================== -->
-<!-- DECORACIÓN FIJA INFERIOR -->
-<!-- ===================================== -->
-<div class="decoracion-fija">
-
-    <!-- TABLERO IZQUIERDO -->
-    <div class="tablero-menu-wrap">
-        <img
-            src="img/img/productos/tablero-menu.png"
-            alt="Tablero de menú"
-            class="tablero-menu-img"
-        />
-
-        <!-- AQUÍ SOLO SE MUESTRA EL TEXTO -->
-        <div id="tablero-texto" class="tablero-menu-texto"></div>
-    </div>
-
-    <!-- CHEF DERECHO -->
-    <div class="chef-wrap">
-        <img
-            src="img/img/productos/chef.png"
-            alt="Chef decorativo"
-            class="chef-img"
-        />
-    </div>
-
-</div>
 </body>
 </html>
