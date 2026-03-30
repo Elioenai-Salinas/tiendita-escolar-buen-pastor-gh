@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiendita Buen Pastor - Menú Digital</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="productos.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #b91c1c;
+            background-image: linear-gradient(#7c2d12 40px, transparent 40px);
+            background-size: 100% 80px;
+            background-attachment: fixed;
+        }
+
+        h1, h2, .font-food {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .panel-celeste {
+            background-color: #e0f2fe;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 4px solid #ffffff;
+        }
+
+        .toldo {
+            display: flex;
+            width: 100%;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .franja {
+            flex: 1;
+            height: 100%;
+            border-bottom-left-radius: 40% 20%;
+            border-bottom-right-radius: 40% 20%;
+        }
+
+        .franja:nth-child(odd) {
+            background-color: #ef4444;
+        }
+
+        .franja:nth-child(even) {
+            background-color: #facc15;
+        }
+
+        .logo-contenedor {
+            width: 130px;
+            height: 130px;
+            margin: -75px auto 15px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            border: 5px solid #facc15;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #img-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform: scale(1.18);
+        }
+
+        .nav-dia-btn.activo {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .btn-recreo-activo {
+            background-color: #2563eb !important;
+            color: white !important;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+       /* ===================================== */
+/* ===================================== */
+/* IMÁGENES INFERIORES: TABLERO Y CHEF   */
+/* ===================================== */
+
+:root {
+    --tablero-ancho: 300px;
+    --chef-ancho: 300px;
+
+    --tablero-left: 16px;
+    --tablero-bottom: 10px;
+
+    --chef-right: -20px;
+    --chef-bottom: 10px;
+
+    /* ÁREA ÚTIL DEL TEXTO DENTRO DEL TABLERO */
+    --texto-top: 180px;
+    --texto-left: 87px;
+    --texto-ancho: 130px;
+    --texto-alto: 190px;
+
+    /* AJUSTE VISUAL */
+    --texto-line-height: 1.05;
+    --texto-rotacion: -6deg;
+    --texto-inclinacion: -3deg;
+}
+
+/* NO SUBE NI BAJA CON EL SCROLL */
+.decoracion-fija {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.tablero-menu-wrap {
+    position: fixed;
+    left: var(--tablero-left);
+    bottom: var(--tablero-bottom);
+    width: var(--tablero-ancho);
+    z-index: 31;
+    pointer-events: none;
+}
+
+.tablero-menu-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tablero-menu-texto {
+    position: absolute;
+    top: var(--texto-top);
+    left: var(--texto-left);
+    width: var(--texto-ancho);
+    height: var(--texto-alto);
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    line-height: var(--texto-line-height);
+    white-space: pre-line;
+    word-break: break-word;
+    transform: rotate(var(--texto-rotacion)) skewX(var(--texto-inclinacion));
+    transform-origin: top center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.chef-wrap {
+    position: fixed;
+    right: var(--chef-right);
+    bottom: var(--chef-bottom);
+    width: var(--chef-ancho);
+    z-index: 31;
+    pointer-events: none;
+}
+
+.chef-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.tablero-menu-texto {
+    position: absolute;
+    top: var(--texto-top);
+    left: var(--texto-left);
+    width: var(--texto-ancho);
+    height: var(--texto-alto);
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: var(--contenido-menu-size);
+    line-height: var(--contenido-line-height);
+    font-weight: 700;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+.tablero-menu-texto .titulo-opcional {
+    display: block;
+    font-size: var(--titulo-menu-size);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.chef-wrap {
+    position: absolute;
+    right: var(--chef-right);
+    bottom: var(--chef-bottom);
+    width: var(--chef-ancho);
+}
+
+.chef-img {
+    width: 100%;
+    height: auto;
+    display: block;
+} 
+
+    </style>
+</head>
+<body class="pb-10">
+
+    <div class="toldo">
+        <div class="franja"></div><div class="franja"></div><div class="franja"></div><div class="franja"></div><div class="franja"></div>
+        <div class="franja"></div><div class="franja"></div><div class="franja"></div><div class="franja"></div><div class="franja"></div>
+    </div>
+
+    <div class="max-w-2xl mx-auto px-4 mt-20">
+        <!-- HEADER -->
+        <header class="panel-celeste p-8 pt-16 text-center mb-8">
+            <div class="logo-contenedor">
+                <img id="img-logo" src="" alt="Logo Escuela" class="max-w-full max-h-full object-contain" />
+            </div>
+
+            <h1 id="txt-tienda" class="text-3xl text-blue-900 uppercase">CARGANDO...</h1>
+            <h2 id="txt-escuela" class="text-xl text-blue-700 font-bold uppercase italic">EL BUEN PASTOR</h2>
+            <p id="txt-eslogan" class="text-blue-500 font-food italic text-lg"></p>
+        </header>
+
+        <!-- SECCIÓN 1: DÍAS -->
+        <section id="paso-1" class="panel-celeste p-8">
+            <h2 class="text-2xl font-food text-blue-900 text-center mb-6">¿Para qué días es el pedido?</h2>
+            <div id="lista-dias" class="grid grid-cols-1 gap-3 mb-8"></div>
+
+            <button
+                onclick="irAlMenu()"
+                id="btn-ver-menu"
+                disabled
+                class="w-full bg-red-600 text-white font-food py-5 rounded-2xl text-xl shadow-lg opacity-50 cursor-not-allowed"
+            >
+                SELECCIONA UN DÍA
+            </button>
+        </section>
+
+        <!-- SECCIÓN 2: MENÚ -->
+        <section id="paso-2" class="hidden space-y-6">
+            <button
+                onclick="volverAlInicio()"
+                class="w-full bg-white text-blue-900 font-bold py-3 rounded-2xl border-2 border-blue-200"
+            >
+                ← Volver y escoger otros días
+            </button>
+
+            <div class="panel-celeste p-4 flex gap-2 overflow-x-auto no-scrollbar" id="nav-dias"></div>
+
+            <div class="panel-celeste p-6">
+                <h3 id="titulo-dia" class="text-3xl font-food text-blue-900 text-center mb-4">Día</h3>
+
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button onclick="cambiarRecreo(1)" id="btn-r1" class="py-4 rounded-xl bg-white border-2 border-blue-200 font-bold text-blue-600">
+                        1er Recreo
+                    </button>
+                    <button onclick="cambiarRecreo(2)" id="btn-r2" class="py-4 rounded-xl bg-white border-2 border-blue-200 font-bold text-blue-600">
+                        2do Recreo
+                    </button>
+                </div>
+
+                <div id="contenedor-productos" class="grid grid-cols-2 gap-4"></div>
+            </div>
+
+            <!-- TOTAL Y ENVÍO -->
+            <div class="bg-blue-900 p-8 rounded-[40px] text-white">
+                <input
+                    type="text"
+                    id="nombre-estudiante"
+                    placeholder="Nombre del Estudiante"
+                    class="w-full p-4 rounded-xl bg-blue-800 border border-blue-700 mb-4 text-white"
+                />
+
+                <input
+                    type="text"
+                    id="nombre-acudiente"
+                    placeholder="Nombre del Acudiente"
+                    class="w-full p-4 rounded-xl bg-blue-800 border border-blue-700 mb-4 text-white"
+                />
+
+                <textarea
+                    id="comentario-pedido"
+                    placeholder="Comentario adicional del acudiente (opcional)"
+                    class="w-full p-4 rounded-xl bg-blue-800 border border-blue-700 mb-4 text-white"
+                    rows="3"
+                ></textarea>
+
+                <label class="flex items-start gap-3 bg-blue-800 border border-blue-700 rounded-xl p-4 mb-6 cursor-pointer">
+                    <input
+                        type="checkbox"
+                        id="check-compromiso"
+                        onchange="actualizarEstadoEnvio()"
+                        class="mt-1 w-5 h-5 accent-green-500"
+                    />
+                    <span class="text-sm leading-6">
+                        Confirmo que me comprometo a pagar el pedido enviado por WhatsApp y que la información suministrada es correcta.
+                    </span>
+                </label>
+
+                <div class="bg-yellow-400 p-5 rounded-2xl text-blue-900 flex justify-between items-center mb-6">
+                    <span class="font-black text-xs uppercase">Total:</span>
+                    <span id="txt-total" class="text-3xl font-food">$0.00</span>
+                </div>
+
+                <button
+                    id="btn-enviar"
+                    onclick="mandarWhatsApp()"
+                    disabled
+                    class="w-full bg-green-500 text-white font-food py-5 rounded-2xl text-xl opacity-50 cursor-not-allowed"
+                >
+                    PEDIR POR WHATSAPP
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let seleccionados = [];
+        let diaActual = "";
+        let recreoActual = 1;
+        let carrito = {};
+
+        const IMG_FALLBACK =
+            "data:image/svg+xml;charset=UTF-8," +
+            encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="400" height="240" viewBox="0 0 400 240">
+                    <rect width="100%" height="100%" fill="#dbeafe"/>
+                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                          font-family="Arial, sans-serif" font-size="24" fill="#1e3a8a">
+                        Sin imagen
+                    </text>
+                </svg>
+            `);
+
+        function inicializarApp() {
+            if (typeof CONFIG_TIENDA === "undefined" || typeof LISTA_PRODUCTOS === "undefined") {
+                document.getElementById("txt-tienda").innerText = "ERROR DE CARGA";
+                document.getElementById("txt-eslogan").innerText = "No se encontró o no cargó bien productos.js";
+                console.error("Error: CONFIG_TIENDA o LISTA_PRODUCTOS no están disponibles.");
+                return;
+            }
+
+            document.getElementById("txt-tienda").innerText = CONFIG_TIENDA.nombreTienda || "La Tiendita Escolar";
+            document.getElementById("txt-escuela").innerText = CONFIG_TIENDA.escuela || "Buen Pastor Golden Haven";
+            document.getElementById("txt-eslogan").innerText = CONFIG_TIENDA.eslogan || "";
+
+            const imgLogo = document.getElementById("img-logo");
+            imgLogo.src = CONFIG_TIENDA.logoUrl || "img/img/productos/imglogo-escuela.png";
+            imgLogo.onerror = function () {
+                this.onerror = null;
+                this.src = "img/imglogo-escuela.jpg";
+            };
+
+            const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+            const listaD = document.getElementById("lista-dias");
+
+            listaD.innerHTML = dias
+                .map(
+                    (d) => `
+                    <button
+                        onclick="marcarDia('${d}')"
+                        id="dia-${d}"
+                        class="p-4 bg-white rounded-2xl border-2 border-blue-50 flex justify-between items-center font-bold text-blue-800"
+                    >
+                        ${d}
+                        <span id="check-${d}" class="hidden text-green-600 font-bold text-xl">✔</span>
+                    </button>
+                `
+                )
+                .join("");
+        }
+
+        function marcarDia(dia) {
+            const btn = document.getElementById(`dia-${dia}`);
+            const check = document.getElementById(`check-${dia}`);
+
+            if (seleccionados.includes(dia)) {
+                seleccionados = seleccionados.filter((item) => item !== dia);
+                btn.classList.remove("bg-blue-100", "border-blue-400");
+                check.classList.add("hidden");
+            } else {
+                seleccionados.push(dia);
+                btn.classList.add("bg-blue-100", "border-blue-400");
+                check.classList.remove("hidden");
+            }
+
+            const btnNext = document.getElementById("btn-ver-menu");
+            const tieneSeleccion = seleccionados.length > 0;
+
+            btnNext.disabled = !tieneSeleccion;
+            btnNext.classList.toggle("opacity-50", !tieneSeleccion);
+            btnNext.classList.toggle("cursor-not-allowed", !tieneSeleccion);
+            btnNext.innerText = tieneSeleccion ? "VER MENÚ DE PRODUCTOS ➔" : "SELECCIONA UN DÍA";
+        }
+
+        function irAlMenu() {
+            if (seleccionados.length === 0) return;
+
+            document.getElementById("paso-1").classList.add("hidden");
+            document.getElementById("paso-2").classList.remove("hidden");
+
+            const nav = document.getElementById("nav-dias");
+            nav.innerHTML = seleccionados
+                .map(
+                    (d) => `
+                    <button
+                        onclick="cambiarDiaVisual('${d}')"
+                        id="nav-${d}"
+                        class="nav-dia-btn px-6 py-2 bg-white rounded-full font-bold shadow-sm border border-blue-100 whitespace-nowrap"
+                    >
+                        ${d}
+                    </button>
+                `
+                )
+                .join("");
+
+            cambiarDiaVisual(seleccionados[0]);
+        }
+
+        function volverAlInicio() {
+            document.getElementById("paso-2").classList.add("hidden");
+            document.getElementById("paso-1").classList.remove("hidden");
+        }
+
+        function cambiarDiaVisual(dia) {
+            diaActual = dia;
+
+            document.querySelectorAll(".nav-dia-btn").forEach((b) => b.classList.remove("activo"));
+            document.getElementById(`nav-${dia}`).classList.add("activo");
+
+            document.getElementById("titulo-dia").innerText = dia;
+            cambiarRecreo(1);
+        }
+
+        function cambiarRecreo(num) {
+            recreoActual = num;
+
+            document.getElementById("btn-r1").classList.remove("btn-recreo-activo");
+            document.getElementById("btn-r2").classList.remove("btn-recreo-activo");
+            document.getElementById(`btn-r${num}`).classList.add("btn-recreo-activo");
+
+            dibujarProductos();
+        }
+
+     function dibujarProductos() {
+    const box = document.getElementById("contenedor-productos");
+
+    let htmlFinal = "";
+
+    CATEGORIAS_MENU.forEach((cat) => {
+        const productosDeCategoria = LISTA_PRODUCTOS.filter(p => p.categoria === cat.id);
+
+        htmlFinal += `
+            <div class="col-span-2 mt-4">
+                <h4 class="text-2xl font-food text-blue-900 text-center mb-4">${cat.titulo}</h4>
+            </div>
+        `;
+
+        if (productosDeCategoria.length === 0) {
+            htmlFinal += `
+                <div class="col-span-2 text-center text-blue-500 italic mb-4">
+                    No hay productos en esta categoría.
+                </div>
+            `;
+            return;
+        }
+
+        htmlFinal += productosDeCategoria.map((p) => {
+            const enCarro = carrito[diaActual]?.[recreoActual]?.find((x) => x.id === p.id);
+            const cant = enCarro ? enCarro.cantidad : 0;
+            const agotado = p.agotado === true;
+
+            return `
+                <div class="rounded-3xl p-3 shadow-sm flex flex-col items-center ${agotado ? "bg-gray-200 opacity-70" : "bg-white"}">
+                    <div class="relative w-full">
+                        <img
+                            src="${p.img}"
+                            alt="${p.name}"
+                            loading="lazy"
+                            class="w-full h-24 object-cover rounded-2xl mb-2 ${agotado ? "grayscale" : ""}"
+                            onerror="this.onerror=null; this.src='${IMG_FALLBACK}'"
+                        >
+                        ${agotado ? `
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                                    AGOTADO
+                                </span>
+                            </div>
+                        ` : ""}
+                    </div>
+
+                    <h4 class="font-bold text-blue-900 text-xs text-center">${p.name}</h4>
+                    <p class="text-blue-500 font-black">$${p.price.toFixed(2)}</p>
+
+                    <div class="flex items-center gap-3 mt-2">
+                        <button
+                            onclick="sumar('${p.id}', -1)"
+                            class="w-8 h-8 bg-gray-100 rounded-lg ${agotado ? "cursor-not-allowed opacity-60" : ""}"
+                            ${agotado ? "disabled" : ""}
+                        >-</button>
+
+                        <span class="font-bold">${cant}</span>
+
+                        <button
+                            onclick="sumar('${p.id}', 1)"
+                            class="w-8 h-8 ${agotado ? "bg-gray-400 cursor-not-allowed" : "bg-blue-900 text-white"} rounded-lg"
+                            ${agotado ? "disabled" : ""}
+                        >+</button>
+                    </div>
+                </div>
+            `;
+        }).join("");
+    });
+
+    box.innerHTML = htmlFinal;
+}
+
+        function sumar(id, cant) {
+            const prod = LISTA_PRODUCTOS.find((p) => p.id === id);
+            if (!prod || prod.agotado) return;
+
+            if (!carrito[diaActual]) carrito[diaActual] = { 1: [], 2: [] };
+
+            let items = carrito[diaActual][recreoActual];
+            const idx = items.findIndex((i) => i.id === id);
+
+            if (idx > -1) {
+                items[idx].cantidad += cant;
+                if (items[idx].cantidad <= 0) items.splice(idx, 1);
+            } else if (cant > 0) {
+                items.push({ ...prod, cantidad: 1 });
+            }
+
+            dibujarProductos();
+            actualizarTotal();
+        }
+
+        function actualizarEstadoEnvio() {
+            const totalTexto = document.getElementById("txt-total").innerText.replace("$", "");
+            const total = parseFloat(totalTexto) || 0;
+            const compromiso = document.getElementById("check-compromiso")?.checked || false;
+
+            const btn = document.getElementById("btn-enviar");
+            const habilitar = total > 0 && compromiso;
+
+            btn.disabled = !habilitar;
+            btn.classList.toggle("opacity-50", !habilitar);
+            btn.classList.toggle("cursor-not-allowed", !habilitar);
+        }
+
+        function actualizarTotal() {
+            let total = 0;
+
+            for (let d in carrito) {
+                [1, 2].forEach((r) => {
+                    (carrito[d][r] || []).forEach((i) => {
+                        total += i.price * i.cantidad;
+                    });
+                });
+            }
+
+            document.getElementById("txt-total").innerText = `$${total.toFixed(2)}`;
+            actualizarEstadoEnvio();
+        }
+
+        function mandarWhatsApp() {
+            const est = document.getElementById("nombre-estudiante").value.trim();
+            const acu = document.getElementById("nombre-acudiente").value.trim();
+            const comentario = document.getElementById("comentario-pedido").value.trim();
+            const compromiso = document.getElementById("check-compromiso").checked;
+
+            if (!est || !acu) {
+                alert("Faltan nombres");
+                return;
+            }
+
+            if (!compromiso) {
+                alert("Debes marcar el compromiso de pago antes de enviar.");
+                return;
+            }
+
+            let msg = `*PEDIDO: ${CONFIG_TIENDA.nombreTienda}*\n`;
+            msg += `Estudiante: ${est}\n`;
+            msg += `Acudiente: ${acu}\n`;
+            msg += `Compromiso de pago: Sí\n`;
+
+            if (comentario) {
+                msg += `Comentario: ${comentario}\n`;
+            }
+
+            msg += `\n`;
+
+            seleccionados.forEach((d) => {
+                [1, 2].forEach((r) => {
+                    const items = carrito[d]?.[r] || [];
+                    if (items.length > 0) {
+                        msg += `*${d} - Recreo ${r}:*\n`;
+                        items.forEach((i) => {
+                            msg += `- ${i.cantidad}x ${i.name}\n`;
+                        });
+                        msg += "\n";
+                    }
+                });
+            });
+
+            msg += `*TOTAL: ${document.getElementById("txt-total").innerText}*`;
+
+            window.open(
+                `https://wa.me/${CONFIG_TIENDA.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`,
+                "_blank"
+            );
+        }
+        
+  const TEXTO_TABLERO = `Que tengas feliz día  bendiciones`;
+
+function autoAjustarTextoTablero() {
+    const el = document.getElementById("tablero-texto");
+    if (!el) return;
+
+    el.innerText = TEXTO_TABLERO;
+
+    let size = 22;
+    const minSize = 9;
+    el.style.fontSize = size + "px";
+
+    while ((el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) && size > minSize) {
+        size -= 0.5;
+        el.style.fontSize = size + "px";
+    }
+}
+
+window.onload = function () {
+    inicializarApp();
+    autoAjustarTextoTablero();
+};
+
+window.addEventListener("resize", autoAjustarTextoTablero);
+    </script>
+    <!-- ===================================== -->
+<!-- DECORACIÓN FIJA INFERIOR -->
+<!-- ===================================== -->
+<div class="decoracion-fija">
+
+    <!-- TABLERO IZQUIERDO -->
+    <div class="tablero-menu-wrap">
+        <img
+            src="img/img/productos/tablero-menu.png"
+            alt="Tablero de menú"
+            class="tablero-menu-img"
+        />
+
+        <!-- AQUÍ SOLO SE MUESTRA EL TEXTO -->
+        <div id="tablero-texto" class="tablero-menu-texto"></div>
+    </div>
+
+    <!-- CHEF DERECHO -->
+    <div class="chef-wrap">
+        <img
+            src="img/img/productos/chef.png"
+            alt="Chef decorativo"
+            class="chef-img"
+        />
+    </div>
+
+</div>
+</body>
+</html>
