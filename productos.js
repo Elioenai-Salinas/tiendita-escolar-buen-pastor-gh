@@ -90,7 +90,7 @@ const LISTA_PRODUCTOS = [
     {
         id: "p7",
         name: "Duros De Frutas grandes",
-        price: 0.75,
+        price: 1.00,
         img: "img/img/productos/duros-frutas_1_.png",
         categoria: "Postres frios",
         agotado: false
