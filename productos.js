@@ -182,7 +182,7 @@ const LISTA_PRODUCTOS = [
         price: 0.40,
         img: "img/img/productos/galleta-pasita.png",
         categoria: "snacks",
-        agotado: false
+        agotado: true
     },
     {
         id: "p19",
@@ -198,7 +198,7 @@ const LISTA_PRODUCTOS = [
         price: 0.50,
         img: "img/img/productos/galletas-bokitas.png",
         categoria: "snacks",
-        agotado: true
+        agotado: false
     },
     {
         id: "p20",
