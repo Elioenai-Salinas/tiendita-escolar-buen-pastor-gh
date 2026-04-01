@@ -193,6 +193,14 @@ const LISTA_PRODUCTOS = [
         agotado: true
     },
     {
+        id: "p19",
+        name: "Galleta Rellena de Queso Blanco
+        price: 050,
+        img: "img/img/productos/galletas-bokitas.png",
+        categoria: "snacks",
+        agotado: true
+    },
+    {
         id: "p20",
         name: "Platanitos",
         price: 0.35,
