@@ -190,10 +190,10 @@ const LISTA_PRODUCTOS = [
         price: 0.40,
         img: "img/img/productos/galleta-sal-pascual.png",
         categoria: "snacks",
-        agotado: true
+        agotado: false
     },
     {
-        id: "p19",
+        id: "p32",
         name: "Galleta Rellena de Queso Blanco",
         price: 0.50,
         img: "img/img/productos/galletas-bokitas.png",
