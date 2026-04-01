@@ -185,6 +185,14 @@ const LISTA_PRODUCTOS = [
         agotado: true
     },
     {
+        id: "p32",
+        name: "Mafá",
+        price: 0.35,
+        img: "img/img/productos/mafa.png",
+        categoria: "snacks",
+        agotado: false
+    },
+    {
         id: "p19",
         name: "Galleta pascual",
         price: 0.40,
