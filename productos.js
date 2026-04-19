@@ -10,7 +10,7 @@ const CONFIG_TIENDA = {
     escuela: "Buen Pastor Golden Haven",
     nombreTienda: "La Tiendita Escolar",
     eslogan: "Sabores que me encantan",
-    logoUrl: "img/img/productos/imglogo-escuela.jpg"
+    logoUrl: "img/imglogo-escuela.jpg"
 };
 
 /**
@@ -148,6 +148,22 @@ const LISTA_PRODUCTOS = [
         name: "Emparedado de Jamón y Queso con frutas y té",
         price: 0.00,
         img: "img/img/productos/emparedado-jamon-queso.png",
+        categoria: "Desayunos",
+        agotado: true
+    },
+    {
+        id: "p33",
+        name: "Hot Dog con Jugo Petit",
+        price: 0.00,
+        img: "img/img/productos/hot_dog_jugo.png",
+        categoria: "Desayunos",
+        agotado: true
+    },
+    {
+        id: "p34",
+        name: "Bollo con Salchicha y Jugo Petit",
+        price: 0.00,
+        img: "img/img/productos/bollo_salchicha_jugo.png",
         categoria: "Desayunos",
         agotado: true
     },
