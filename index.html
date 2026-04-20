@@ -354,10 +354,10 @@
                     return;
                 }
 
-                htmlFinal += productosDeCategoria.map((p) => {
+                htmlFinal += productosDeCategoria.filter((p) => p.agotado !== true).map((p) => {
                     const enCarro = carrito[diaActual]?.[recreoActual]?.find((x) => x.id === p.id);
                     const cant = enCarro ? enCarro.cantidad : 0;
-                    const agotado = p.agotado === true;
+                    const agotado = false;
 
                     return `
                         <div class="rounded-3xl p-3 shadow-sm flex flex-col items-center ${agotado ? "bg-gray-200 opacity-70" : "bg-white"}">
