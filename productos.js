@@ -312,4 +312,12 @@ const LISTA_PRODUCTOS = [
         categoria: "Útiles Escolares",
         agotado: true
     },
+    {
+        id: "p36",
+        name: "Agua Piovana",
+        price: 0.50,
+        img: "img/img/productos/agua-piovan.jpeg",
+        categoria: "Bebidas",
+        agotado: false
+    },
 ];
