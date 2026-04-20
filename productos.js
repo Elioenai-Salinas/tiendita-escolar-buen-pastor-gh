@@ -69,7 +69,7 @@ const LISTA_PRODUCTOS = [
         price: 0.60,
         img: "img/img/productos/jugo-del-monte-surtido.png",
         categoria: "Bebidas",
-        agotado: false
+        agotado: true
     },
     {
         id: "p5",
@@ -222,7 +222,7 @@ const LISTA_PRODUCTOS = [
         price: 0.50,
         img: "img/img/productos/galletas-bokitas.png",
         categoria: "snacks",
-        agotado: false
+        agotado: true
     },
     {
         id: "p20",
@@ -238,7 +238,7 @@ const LISTA_PRODUCTOS = [
         price: 0.25,
         img: "img/img/productos/galleta_maria.png",
         categoria: "snacks",
-        agotado: false
+        agotado: true
     },
     {
         id: "p24",
