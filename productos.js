@@ -218,7 +218,7 @@ const LISTA_PRODUCTOS = [
     },
     {
         id: "p35",
-        name: "galleta_pascual_limon",
+        name: "Galleta Pascual de Limón",
         price: 0.40,
         img: "img/img/productos/galleta_pascual_limon.png",
         categoria: "snacks",
