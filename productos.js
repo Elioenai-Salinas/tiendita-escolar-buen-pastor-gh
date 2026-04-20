@@ -316,7 +316,7 @@ const LISTA_PRODUCTOS = [
         id: "p36",
         name: "Agua Piovana",
         price: 0.50,
-        img: "img/img/productos/agua_piovana.png",
+        img: "img/img/productos/agua_piovana.png?v=20260420-2",
         categoria: "Bebidas",
         agotado: false
     },
