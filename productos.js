@@ -217,6 +217,14 @@ const LISTA_PRODUCTOS = [
         agotado: false
     },
     {
+        id: "p35",
+        name: "galleta_pascual_limon",
+        price: 0.40,
+        img: "img/img/productos/galleta_pascual_limon.png",
+        categoria: "snacks",
+        agotado: false
+    },
+    {
         id: "p32",
         name: "Galleta Rellena de Queso Blanco",
         price: 0.50,
