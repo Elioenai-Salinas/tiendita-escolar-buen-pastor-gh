@@ -154,24 +154,24 @@ const LISTA_PRODUCTOS = [
     {
         id: "p33",
         name: "Hot Dog con Jugo Petit",
-        price: 0.00,
+        price: 1.55,
         img: "img/img/productos/hot_dog_jugo.png",
         categoria: "Desayunos",
-        agotado: true
+        agotado: false
     },
     {
         id: "p34",
         name: "Bollo con Salchicha y Jugo Petit",
-        price: 0.00,
+        price: 1.80,
         img: "img/img/productos/bollo_salchicha_jugo.png",
         categoria: "Desayunos",
-        agotado: true
+        agotado: false
     },
     {
         id: "p15",
         name: "Siu Mai",
         price: 0.60,
-        img: "img/img/productos/siumai.png",
+        img: "img/img/productos/siumai.png", 
         categoria: "Delicias Orientales",
         agotado: false
     },
