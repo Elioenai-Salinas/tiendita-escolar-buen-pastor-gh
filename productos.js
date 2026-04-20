@@ -162,7 +162,7 @@ const LISTA_PRODUCTOS = [
     {
         id: "p34",
         name: "Bollo con Salchicha y Jugo Petit",
-        price: 1.80,
+        price: 1.95,
         img: "img/img/productos/bollo_salchicha_jugo.png",
         categoria: "Desayunos",
         agotado: false
