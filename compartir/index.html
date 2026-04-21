@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>La Tiendita Escolar</title>
+    <meta name="description" content="" />
+
+    <!-- WhatsApp / Facebook (Open Graph) -->
+    <link rel="canonical" href="https://elioenai-salinas.github.io/tiendita-escolar-buen-pastor-gh/compartir/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="&#8203;" />
+    <meta property="og:description" content="&#8203;" />
+    <meta property="og:url" content="https://elioenai-salinas.github.io/tiendita-escolar-buen-pastor-gh/compartir/" />
+    <meta property="og:image" content="https://elioenai-salinas.github.io/tiendita-escolar-buen-pastor-gh/img/imglogo-escuela.jpg" />
+    <meta property="og:image:alt" content="Logo del colegio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="&#8203;" />
+    <meta name="twitter:description" content="&#8203;" />
+    <meta name="twitter:image" content="https://elioenai-salinas.github.io/tiendita-escolar-buen-pastor-gh/img/imglogo-escuela.jpg" />
+    <meta http-equiv="refresh" content="0; url=../" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-b from-red-700 to-orange-900 flex items-center justify-center p-6">
+    <main class="max-w-lg w-full bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 text-center border-4 border-yellow-300">
+        <div class="w-28 h-28 rounded-full bg-white mx-auto -mt-14 mb-4 shadow-lg border-4 border-yellow-400 flex items-center justify-center overflow-hidden">
+            <img src="../img/imglogo-escuela.jpg" alt="Logo Escuela" class="w-full h-full object-contain scale-110" />
+        </div>
+
+        <h1 class="text-2xl font-extrabold text-blue-900 uppercase">La Tiendita Escolar</h1>
+        <p class="text-blue-700 font-bold uppercase italic mt-1">Buen Pastor Golden Haven</p>
+        <p class="text-slate-700 mt-4">Este enlace se usa para compartir la tiendita con una vista limpia en WhatsApp.</p>
+
+        <div class="mt-6 grid gap-3">
+            <a href="../" class="w-full bg-blue-900 text-white font-extrabold py-4 rounded-2xl shadow-lg">
+                Abrir la Tiendita
+            </a>
+            <a id="btn-ws" href="#" target="_blank" rel="noopener" class="w-full bg-green-600 text-white font-extrabold py-4 rounded-2xl shadow-lg">
+                Compartir por WhatsApp
+            </a>
+        </div>
+
+        <p class="text-xs text-slate-500 mt-5">Si WhatsApp conserva la vista anterior, prueba el mismo enlace con ?v=2 al final.</p>
+    </main>
+
+    <script>
+        (function () {
+            const msg = `${new URL("./", window.location.href).href}`;
+            const href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+            const btn = document.getElementById("btn-ws");
+            btn.href = href;
+        })();
+    </script>
+</body>
+</html>
