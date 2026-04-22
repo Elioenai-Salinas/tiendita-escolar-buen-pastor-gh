@@ -89,6 +89,31 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
+        .contacto-japi {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: -10px;
+            margin-bottom: 22px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #fca5a5, #fde68a);
+            color: #991b1b;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .contacto-japi strong {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.05rem;
+            color: #0c4a6e;
+            letter-spacing: 0.03em;
+        }
+
+        .contacto-japi span {
+            font-weight: 800;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body class="pb-10">
@@ -186,6 +211,13 @@
                     </span>
                 </label>
 
+                <div class="flex justify-center">
+                    <div class="contacto-japi">
+                        <strong>Japi</strong>
+                        <span id="txt-whatsapp-japi">6285-2414</span>
+                    </div>
+                </div>
+
                 <div class="bg-yellow-400 p-5 rounded-2xl text-blue-900 flex justify-between items-center mb-6">
                     <span class="font-black text-xs uppercase">Total:</span>
                     <span id="txt-total" class="text-3xl font-food">$0.00</span>
@@ -221,6 +253,17 @@
                 </svg>
             `);
 
+        function formatearTelefonoWhatsApp(valor) {
+            const limpio = String(valor || "").replace(/\D/g, "");
+            const base = limpio.length >= 8 ? limpio.slice(-8) : limpio;
+
+            if (base.length === 8) {
+                return `${base.slice(0, 4)}-${base.slice(4)}`;
+            }
+
+            return base || "6285-2414";
+        }
+
         function inicializarApp() {
             if (typeof CONFIG_TIENDA === "undefined" || typeof LISTA_PRODUCTOS === "undefined") {
                 document.getElementById("txt-tienda").innerText = "ERROR DE CARGA";
@@ -232,6 +275,7 @@
             document.getElementById("txt-tienda").innerText = CONFIG_TIENDA.nombreTienda || "La Tiendita Escolar";
             document.getElementById("txt-escuela").innerText = CONFIG_TIENDA.escuela || "Buen Pastor Golden Haven";
             document.getElementById("txt-eslogan").innerText = CONFIG_TIENDA.eslogan || "";
+            document.getElementById("txt-whatsapp-japi").innerText = formatearTelefonoWhatsApp(CONFIG_TIENDA.whatsapp);
 
             const imgLogo = document.getElementById("img-logo");
             imgLogo.src = CONFIG_TIENDA.logoUrl || "img/imglogo-escuela.jpg";
