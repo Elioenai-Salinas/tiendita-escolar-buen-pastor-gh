@@ -85,7 +85,7 @@ const LISTA_PRODUCTOS = [
         price: 0.50,
         img: "img/img/productos/duros-frutas.png",
         categoria: "Postres frios",
-        agotado: false
+        agotado: true
     },
     {
         id: "p7",
@@ -93,7 +93,7 @@ const LISTA_PRODUCTOS = [
         price: 1.00,
         img: "img/img/productos/duros-frutas_1_.png",
         categoria: "Postres frios",
-        agotado: false
+        agotado: true
     },
     {
         id: "p8",
@@ -153,15 +153,15 @@ const LISTA_PRODUCTOS = [
     },
     {
         id: "p33",
-        name: "Hot Dog con Jugo Petit",
+        name: "Huevo con Jugo Petit",
         price: 1.55,
-        img: "img/img/productos/hot_dog_jugo.png",
+        img: "img/img/productos/bollo-huevo-hervido-guineo-te.png",
         categoria: "Desayunos",
         agotado: false
     },
     {
         id: "p34",
-        name: "Bollo con Salchicha y Jugo Petit",
+        name: "Pollo con Salchicha",
         price: 1.95,
         img: "img/img/productos/bollo_salchicha_jugo.png",
         categoria: "Desayunos",
