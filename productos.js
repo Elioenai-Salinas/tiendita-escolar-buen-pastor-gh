@@ -37,7 +37,7 @@ const LISTA_PRODUCTOS = [
         price: 0.65,
         img: "img/img/productos/malta-vigor-chica.png",
         categoria: "Bebidas",
-        agotado: false
+        agotado: true
     },
     {
         id: "p2",
@@ -61,7 +61,7 @@ const LISTA_PRODUCTOS = [
         price: 0.55,
         img: "img/img/productos/jugos_petit.png",
         categoria: "Bebidas",
-        agotado: false
+        agotado: true
     },
     {
         id: "p4",
@@ -157,15 +157,15 @@ const LISTA_PRODUCTOS = [
         price: 1.55,
         img: "img/img/productos/bollo-huevo-hervido-guineo-te.png",
         categoria: "Desayunos",
-        agotado: false
+        agotado: true
     },
     {
         id: "p34",
-        name: "Pollo con Salchicha",
+        name: "Bollo con Salchicha",
         price: 1.95,
         img: "img/img/productos/bollo_salchicha_jugo.png",
         categoria: "Desayunos",
-        agotado: false
+        agotado: true
     },
     {
         id: "p15",
@@ -214,7 +214,7 @@ const LISTA_PRODUCTOS = [
         price: 0.40,
         img: "img/img/productos/galleta-sal-pascual.png",
         categoria: "snacks",
-        agotado: false
+        agotado: true
     },
     {
         id: "p35",
@@ -222,7 +222,7 @@ const LISTA_PRODUCTOS = [
         price: 0.40,
         img: "img/img/productos/galleta_pascual_limon.png",
         categoria: "snacks",
-        agotado: false
+        agotado: true
     },
     {
         id: "p32",
@@ -238,7 +238,7 @@ const LISTA_PRODUCTOS = [
         price: 0.35,
         img: "img/img/productos/platanito.png",
         categoria: "snacks",
-        agotado: false
+        agotado: true
     },
     {
         id: "p23",
