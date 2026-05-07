@@ -214,7 +214,7 @@ const LISTA_PRODUCTOS = [
         price: 0.40,
         img: "img/img/productos/galleta-sal-pascual.png",
         categoria: "snacks",
-        agotado: true
+        agotado: false
     },
     {
         id: "p35",
@@ -222,7 +222,7 @@ const LISTA_PRODUCTOS = [
         price: 0.40,
         img: "img/img/productos/galleta_pascual_limon.png",
         categoria: "snacks",
-        agotado: true
+        agotado: false
     },
     {
         id: "p32",
